@@ -73,14 +73,19 @@ public:
 		cout<<"CONTACT LIST";
 		cout<<"\n---------------------------------------------\n";
 
+		bool flag=0;
 		while(!file2.eof()) {
 			if(file2.read(reinterpret_cast<char*>(this),sizeof(*this)))
 			{
 				showContact();
 				cout<<"\n---------------------------------------------\n";
+				flag=1;
 			}
 		}
-        cout<<"END OF CONTACT LIST";
+		if(flag==0){
+			cout<<"No contact found"<<endl;
+		}
+        	cout<<"END OF CONTACT LIST";
 		cout<<"\n---------------------------------------------\n";
 		file2.close();
 	}
